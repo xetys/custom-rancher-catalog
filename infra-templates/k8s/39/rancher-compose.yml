@@ -166,6 +166,7 @@
     label: Additional Kubelet Flags
     required: false
     type: string
+    default: "--volume-plugin-dir\=/var/lib/kubelet/volumeplugins"
   - variable: EMBEDDED_BACKUPS
     label: Enable Backups
     description: "Periodically backup state to /var/etcd/backups. Mount network storage here on all hosts before continuing"
@@ -219,6 +220,10 @@ kubernetes:
         sans:
         - "IP:${KUBEAPI_CLUSTER_IP}"
         - "kubernetes.default.svc.cluster.local"
+        - "kubernetes.default.svc.cluster"
+        - "kubernetes.default.svc"
+        - "kubernetes.default"
+        - "kubernetes"
     health_check:
         port: 6443
         interval: 2000
